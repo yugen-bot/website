@@ -19,23 +19,45 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 	{
 		head: () => ({
 			meta: [
+				{ charSet: 'utf8' },
+				{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
+				{ title: 'Yugen Stack' },
 				{
-					charSet: 'utf8',
+					name: 'description',
+					content:
+						'A collection of fun and simplistic Discord bots built to elevate your community.',
+				},
+				{ name: 'theme-color', content: '#7c3aed' },
+				// Open Graph
+				{ property: 'og:type', content: 'website' },
+				{ property: 'og:site_name', content: 'Yugen Stack' },
+				{ property: 'og:title', content: 'Yugen Stack' },
+				{
+					property: 'og:description',
+					content:
+						'A collection of fun and simplistic Discord bots built to elevate your community.',
 				},
 				{
-					name: 'viewport',
-					content: 'width=device-width, initial-scale=1',
+					property: 'og:image',
+					content: 'https://yugen.bot/yugen bot banner.png',
+				},
+				{ property: 'og:image:alt', content: 'Yugen Stack' },
+				{ property: 'og:image:width', content: '1200' },
+				{ property: 'og:image:height', content: '630' },
+				// Twitter / X
+				{ name: 'twitter:card', content: 'summary_large_image' },
+				{ name: 'twitter:title', content: 'Yugen Stack' },
+				{
+					name: 'twitter:description',
+					content:
+						'A collection of fun and simplistic Discord bots built to elevate your community.',
 				},
 				{
-					title: 'Yugen Stack',
+					name: 'twitter:image',
+					content: 'https://yugen.bot/yugen bot banner.png',
 				},
 			],
-			links: [
-				{
-					rel: 'stylesheet',
-					href: appCss,
-				},
-			],
+			links: [{ rel: 'stylesheet', href: appCss }],
 		}),
 		shellComponent: RootDocument,
 		notFoundComponent: NotFound,

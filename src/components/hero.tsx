@@ -1,5 +1,5 @@
-import { siGithub, siDiscord } from 'simple-icons';
 import { Coffee } from 'lucide-react';
+import { siGithub, siDiscord } from 'simple-icons';
 
 import { BOTS, botLogoUrl } from '../lib/bots';
 import { DISCORD_URL, GITHUB_URL, KOFI_URL } from '../lib/links';
@@ -94,10 +94,12 @@ export default function Hero() {
 				</a>
 				<a
 					className='
-						inline-flex items-center gap-2 rounded-full border border-line bg-surface/60
-						px-6 py-3 font-medium text-ink no-underline backdrop-blur-sm transition
+						inline-flex items-center gap-2 rounded-full border border-line
+						bg-surface/60 px-6 py-3 font-medium text-ink no-underline backdrop-blur-sm
+						transition
 						hover:bg-surface
-						focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:outline-none
+						focus-visible:ring-2 focus-visible:ring-brand-500
+						focus-visible:outline-none
 					'
 					href={KOFI_URL}
 					rel='noopener noreferrer'

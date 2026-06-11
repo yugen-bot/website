@@ -13,16 +13,24 @@ export default function Footer() {
 		<footer className='mt-16 border-t border-line'>
 			<div
 				className='
-					mx-auto flex max-w-6xl flex-wrap items-center gap-4 px-4
-					py-6 text-sm text-ink-soft
+					mx-auto flex max-w-6xl flex-wrap items-center gap-4 px-4 py-6 text-sm
+					text-ink-soft
 					md:grid md:grid-cols-3
 				'
 			>
 				{/* Left: copyright + privacy */}
-				<div className='order-3 flex w-full items-center gap-4 md:order-none md:w-auto'>
+				<div
+					className='
+						order-3 flex w-full items-center gap-4
+						md:order-0 md:w-auto
+					'
+				>
 					<span>© {year} Yugen Stack</span>
 					<a
-						className='transition hover:text-ink'
+						className='
+							transition
+							hover:text-ink
+						'
 						href='#'
 					>
 						Privacy policy
@@ -30,18 +38,29 @@ export default function Footer() {
 				</div>
 
 				{/* Center: owner credit */}
-				<div className='order-2 flex w-full justify-start md:order-none md:w-auto md:justify-center'>
+				<div
+					className='
+						order-2 flex w-full justify-start
+						md:order-0 md:w-auto md:justify-center
+					'
+				>
 					<OwnerCredit variant='small' />
 				</div>
 
 				{/* Right: social nav */}
 				<nav
 					aria-label='Social links'
-					className='order-1 flex w-full items-center gap-3 md:order-none md:w-auto md:justify-end'
+					className='
+						order-1 flex w-full items-center gap-3
+						md:order-0 md:w-auto md:justify-end
+					'
 				>
 					<a
 						aria-label='GitHub'
-						className='rounded-lg p-1.5 transition hover:bg-surface-muted hover:text-ink'
+						className='
+							rounded-lg p-1.5 transition
+							hover:bg-surface-muted hover:text-ink
+						'
 						href={GITHUB_URL}
 						rel='noopener noreferrer'
 						target='_blank'
@@ -53,7 +72,10 @@ export default function Footer() {
 					</a>
 					<a
 						aria-label='Discord'
-						className='rounded-lg p-1.5 transition hover:bg-surface-muted hover:text-ink'
+						className='
+							rounded-lg p-1.5 transition
+							hover:bg-surface-muted hover:text-ink
+						'
 						href={DISCORD_URL}
 						rel='noopener noreferrer'
 						target='_blank'

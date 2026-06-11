@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import { Sun, Moon, SunMoon } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 type ThemeMode = 'light' | 'dark' | 'auto';
 
@@ -82,7 +82,8 @@ export default function ThemeToggle({ tooltipSide = 'top' }: ThemeToggleProps) {
 			<button
 				aria-label={label}
 				className='
-					cursor-pointer rounded-full border border-line bg-surface p-2 text-ink transition
+					cursor-pointer rounded-full border border-line bg-surface p-2 text-ink
+					transition
 					hover:-translate-y-0.5
 				'
 				type='button'
@@ -97,13 +98,18 @@ export default function ThemeToggle({ tooltipSide = 'top' }: ThemeToggleProps) {
 				)}
 			</button>
 			<span
-				className={`pointer-events-none absolute whitespace-nowrap rounded-md bg-ink px-2 py-1 text-xs text-surface opacity-0 transition-opacity group-hover:opacity-100 ${
-					tooltipSide === 'bottom'
-						? 'top-full left-1/2 mt-2 -translate-x-1/2'
-						: tooltipSide === 'left'
-							? 'right-full top-1/2 mr-2 -translate-y-1/2'
-							: 'bottom-full left-1/2 mb-2 -translate-x-1/2'
-				}`}
+				className={`
+					pointer-events-none absolute rounded-md bg-ink px-2 py-1 text-xs
+					whitespace-nowrap text-surface opacity-0 transition-opacity
+					group-hover:opacity-100
+					${
+						tooltipSide === 'bottom'
+							? 'top-full left-1/2 mt-2 -translate-x-1/2'
+							: tooltipSide === 'left'
+								? 'top-1/2 right-full mr-2 -translate-y-1/2'
+								: 'bottom-full left-1/2 mb-2 -translate-x-1/2'
+					}
+				`}
 			>
 				{tooltipLabel}
 			</span>

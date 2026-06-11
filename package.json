@@ -1,0 +1,67 @@
+{
+	"name": "yugen-website",
+	"private": true,
+	"type": "module",
+	"imports": {
+		"#/*": "./src/*"
+	},
+	"scripts": {
+		"dev": "dotenv -e .env.local -- sh -c \"NODE_OPTIONS='--import ./instrument.server.mjs' vite dev --port 3000\"",
+		"generate-routes": "tsr generate",
+		"build": "vite build",
+		"preview": "vite preview",
+		"test": "vitest run",
+		"lint": "eslint ./src",
+		"lint:fix": "yarn lint --fix",
+		"typecheck": "tsc --noEmit",
+		"start": "node --import ./.output/server/instrument.server.mjs .output/server/index.mjs",
+		"deploy": "yarn build && wrangler deploy"
+	},
+	"dependencies": {
+		"@clerk/clerk-react": "^5.61.3",
+		"@cloudflare/vite-plugin": "^1.26.0",
+		"@sentry/tanstackstart-react": "^10.42.0",
+		"@tailwindcss/vite": "^4.1.18",
+		"@tanstack/react-devtools": "latest",
+		"@tanstack/react-form": "^1.33.0",
+		"@tanstack/react-query": "^5.101.0",
+		"@tanstack/react-router": "latest",
+		"@tanstack/react-router-devtools": "latest",
+		"@tanstack/react-router-ssr-query": "latest",
+		"@tanstack/react-start": "latest",
+		"@tanstack/react-store": "^0.11.0",
+		"@tanstack/router-plugin": "^1.132.0",
+		"dotenv-cli": "^11.0.0",
+		"lucide-react": "^0.545.0",
+		"react": "^19.2.0",
+		"react-dom": "^19.2.0",
+		"react-markdown": "^10.1.0",
+		"simple-icons": "^16.23.0",
+		"tailwindcss": "^4.1.18"
+	},
+	"devDependencies": {
+		"@tailwindcss/typography": "^0.5.16",
+		"@tanstack/devtools-vite": "latest",
+		"@tanstack/router-cli": "^1.132.0",
+		"@testing-library/dom": "^10.4.1",
+		"@testing-library/react": "^16.3.0",
+		"@types/node": "^22.10.2",
+		"@types/react": "^19.2.0",
+		"@types/react-dom": "^19.2.0",
+		"@vitejs/plugin-react": "^6.0.1",
+		"@paperless/conventions": "3.11.0",
+		"eslint": "^9.39.1",
+		"jsdom": "^28.1.0",
+		"prettier": "~3.8.1",
+		"typescript": "~5.9.3",
+		"vite": "^8.0.0",
+		"vitest": "^4.1.5",
+		"wrangler": "^4.70.0"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"esbuild",
+			"lightningcss"
+		]
+	}
+}

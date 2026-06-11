@@ -2,7 +2,6 @@ export interface Bot {
 	id: string;
 	name: string;
 	description: string;
-	screenshot?: string;
 	accentColor?: string;
 	voteUrl: string;
 }
@@ -13,6 +12,10 @@ export function botLogoUrl(id: string): string {
 
 export function botInviteUrl(id: string): string {
 	return `https://invite-${id}.yugen.bot`;
+}
+
+export function botScreenshotUrl(id: string): string {
+	return `/${id}-example.png`;
 }
 
 export const BOTS: Bot[] = [
@@ -27,7 +30,6 @@ export const BOTS: Bot[] = [
 - Type <any valid 6 letter word> to make a guess (no prefix needed, but you can prefix it with ! if you are a Co-ordle veteran)
 - You only have 9 guesses per Koto game, so be careful!
 `,
-		screenshot: '/koto example.png',
 		accentColor: '#B9AD6C',
 		voteUrl: 'https://top.gg/bot/1164654805730472018',
 	},
@@ -40,7 +42,6 @@ export const BOTS: Bot[] = [
 - The first word can be any word
 - Each word afterwards has to start with the last letter of the previous word
 - That's it! Enjoy!`,
-		screenshot: '/kusari example.png',
 		accentColor: '#81BA6C',
 		voteUrl: 'https://top.gg/bot/1186650405703262208',
 	},
@@ -54,7 +55,6 @@ export const BOTS: Bot[] = [
 - Each count afterwards has to be one number higher than the previous count. It can also be an equation when math is enabled.
 - A single person can not count twice in a row!
 - That's it! Enjoy!`,
-		screenshot: '/kazu example.png',
 		accentColor: '#5C80ED',
 		voteUrl: 'https://top.gg/bot/1260679337594589356',
 	},
@@ -69,7 +69,6 @@ To add another starboard, use \`/starboard add\`.
 
 *Notes:*
 - Hoshi does not yet support super reactions!`,
-		screenshot: '/hoshi example.png',
 		accentColor: '#ECE15C',
 		voteUrl: 'https://top.gg/bot/1208707348659445800',
 	},
@@ -77,7 +76,6 @@ To add another starboard, use \`/starboard add\`.
 		id: 'iro',
 		name: 'Iro',
 		description: `A simple color replying discord bot! Iro(色 - color)`,
-		screenshot: '/iro example.png',
 		accentColor: '#DC3563',
 		voteUrl: 'https://top.gg/bot/1305247349702135908',
 	},

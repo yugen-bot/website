@@ -39,7 +39,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 				},
 				{
 					property: 'og:image',
-					content: 'https://yugen.bot/yugen bot banner.png',
+					content: 'https://yugen.bot/yugen-banner.png',
 				},
 				{ property: 'og:image:alt', content: 'Yugen Stack' },
 				{ property: 'og:image:width', content: '1200' },
@@ -54,7 +54,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 				},
 				{
 					name: 'twitter:image',
-					content: 'https://yugen.bot/yugen bot banner.png',
+					content: 'https://yugen.bot/yugen-banner.png',
 				},
 			],
 			links: [{ rel: 'stylesheet', href: appCss }],

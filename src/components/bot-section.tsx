@@ -1,7 +1,7 @@
 import Markdown from 'react-markdown';
 
 import { useBotMetrics } from '../hooks/use-bot-metrics';
-import { botInviteUrl, botLogoUrl } from '../lib/bots';
+import { botInviteUrl, botLogoUrl, botScreenshotUrl } from '../lib/bots';
 import type { Bot } from '../lib/bots';
 
 interface BotSectionProps {
@@ -139,11 +139,11 @@ export default function BotSection({ bot, index }: BotSectionProps) {
 
 				{/* Screenshot */}
 				<div className='w-full flex-1'>
-					{bot.screenshot ? (
+					{botScreenshotUrl(bot.id) ? (
 						<img
 							alt={`${bot.name} screenshot`}
 							className='w-full'
-							src={bot.screenshot}
+							src={botScreenshotUrl(bot.id)}
 						/>
 					) : (
 						<div

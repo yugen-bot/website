@@ -4,4 +4,19 @@
 	"compatibility_date": "2026-04-07",
 	"compatibility_flags": ["nodejs_compat"],
 	"main": "@tanstack/react-start/server-entry",
+	"observability": {
+		"enabled": true,
+		"logs": {
+			"enabled": true,
+			"head_sampling_rate": 1,
+			"invocation_logs": true,
+		},
+		"traces": {
+			"enabled": true,
+		},
+	},
+	"vars": {
+		"VITE_SENTRY_DSN": "https://4bb84ba762eae54770bf0bd7815d3e23@o4506079083167744.ingest.us.sentry.io/4511546074005504",
+		"VITE_CLERK_PUBLISHABLE_KEY": "pk_test_c3dlZXQtcHVwLTEzLmNsZXJrLmFjY291bnRzLmRldiQ",
+	},
 }

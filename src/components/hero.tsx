@@ -1,7 +1,8 @@
 import { siGithub, siDiscord } from 'simple-icons';
+import { Coffee } from 'lucide-react';
 
 import { BOTS, botLogoUrl } from '../lib/bots';
-import { DISCORD_URL, GITHUB_URL } from '../lib/links';
+import { DISCORD_URL, GITHUB_URL, KOFI_URL } from '../lib/links';
 
 import BrandIcon from './brand-icon';
 import OwnerCredit from './owner-credit';
@@ -90,6 +91,20 @@ export default function Hero() {
 						size={18}
 					/>
 					GitHub
+				</a>
+				<a
+					className='
+						inline-flex items-center gap-2 rounded-full border border-line bg-surface/60
+						px-6 py-3 font-medium text-ink no-underline backdrop-blur-sm transition
+						hover:bg-surface
+						focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:outline-none
+					'
+					href={KOFI_URL}
+					rel='noopener noreferrer'
+					target='_blank'
+				>
+					<Coffee size={18} />
+					Buy me a coffee
 				</a>
 			</div>
 

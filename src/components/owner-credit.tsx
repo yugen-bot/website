@@ -6,10 +6,11 @@ interface OwnerCreditProps {
 
 export default function OwnerCredit({ variant }: OwnerCreditProps) {
 	const { username, avatarUrl, loading } = useOwner();
-
-	if (loading || !username) return null;
-
 	const isBig = variant === 'big';
+
+	if (loading || !username) {
+		return <div className={isBig ? 'size-8' : 'size-5'} />;
+	}
 
 	return (
 		<a

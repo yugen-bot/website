@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 export interface BotMetrics {
 	guilds: number | null;
@@ -26,31 +26,23 @@ function parseMetric(text: string, name: string): number | null {
 }
 
 export function useBotMetrics(id: string): BotMetrics {
-	const [metrics, setMetrics] = useState<BotMetrics>({
-		guilds: null,
-		online: false,
-		loading: true,
+	const { data, isPending, isSuccess } = useQuery({
+		queryKey: ['bot-metrics', id],
+		queryFn: async () => {
+			const res = await fetch(`https://${id}-api.yugen.bot/api/metrics`);
+			if (!res.ok) throw new Error('non-ok response');
+			const text = await res.text();
+			const guilds = parseMetric(text, 'discord_stat_total_guilds');
+			return { guilds };
+		},
+		refetchInterval: 30_000,
+		retry: 2,
+		retryDelay: attempt => Math.min(1000 * 2 ** attempt, 10_000),
 	});
 
-	useEffect(() => {
-		const url = `https://${id}-api.yugen.bot/api/metrics`;
-
-		async function fetchMetrics() {
-			try {
-				const res = await fetch(url);
-				if (!res.ok) throw new Error('non-ok response');
-				const text = await res.text();
-				const guilds = parseMetric(text, 'discord_stat_total_guilds');
-				setMetrics({ guilds, online: true, loading: false });
-			} catch {
-				setMetrics({ guilds: null, online: false, loading: false });
-			}
-		}
-
-		fetchMetrics();
-		const interval = setInterval(fetchMetrics, 30_000);
-		return () => clearInterval(interval);
-	}, [id]);
-
-	return metrics;
+	return {
+		guilds: data?.guilds ?? null,
+		online: isSuccess,
+		loading: isPending,
+	};
 }

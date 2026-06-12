@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 import { OWNER_ID } from '../lib/config';
 
@@ -14,29 +14,23 @@ function resolveAvatarUrl(avatar: string): string {
 }
 
 export function useOwner(): OwnerData {
-	const [data, setData] = useState<OwnerData>({
-		username: null,
-		avatarUrl: null,
-		loading: true,
+	const { data, isPending } = useQuery({
+		queryKey: ['owner', OWNER_ID],
+		queryFn: async () => {
+			const res = await fetch(
+				`https://kusari-api.yugen.bot/api/users/${OWNER_ID}`
+			);
+			if (!res.ok) throw new Error('non-ok response');
+			return res.json() as Promise<{ username: string; avatarUrl: string }>;
+		},
+		staleTime: Infinity,
+		retry: 2,
+		retryDelay: attempt => Math.min(1000 * 2 ** attempt, 10_000),
 	});
 
-	useEffect(() => {
-		fetch(`https://kusari-api.yugen.bot/api/users/${OWNER_ID}`)
-			.then(res => {
-				if (!res.ok) throw new Error('non-ok response');
-				return res.json();
-			})
-			.then((json: { username: string; avatarUrl: string }) => {
-				setData({
-					username: json.username ?? null,
-					avatarUrl: json.avatarUrl ? resolveAvatarUrl(json.avatarUrl) : null,
-					loading: false,
-				});
-			})
-			.catch(() => {
-				setData({ username: null, avatarUrl: null, loading: false });
-			});
-	}, []);
-
-	return data;
+	return {
+		username: data?.username ?? null,
+		avatarUrl: data?.avatarUrl ? resolveAvatarUrl(data.avatarUrl) : null,
+		loading: isPending,
+	};
 }

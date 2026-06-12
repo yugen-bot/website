@@ -63,18 +63,29 @@ export default function BotSection({ bot, index }: BotSectionProps) {
 								}
 							`}
 						>
-							<span
-								className={`
-									size-1.5 rounded-full
-									${
-										metrics.loading
-											? 'bg-ink-soft'
-											: metrics.online
-												? 'animate-pulse bg-green-500'
-												: 'bg-red-500'
-									}
-								`}
-							/>
+							<div className='relative size-1.5'>
+								<span
+									className={`
+										absolute top-0 left-0 size-1.5 rounded-full
+										${
+											metrics.loading
+												? 'bg-ink-soft'
+												: metrics.online
+													? 'bg-green-500'
+													: 'bg-red-500'
+										}
+									`}
+								/>
+
+								{metrics.online && (
+									<span
+										className='
+											absolute top-0 left-0 size-1.5 animate-ping rounded-full bg-green-500
+										'
+									/>
+								)}
+							</div>
+
 							{metrics.loading
 								? 'Checking…'
 								: metrics.online

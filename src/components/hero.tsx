@@ -11,7 +11,7 @@ export default function Hero() {
 	return (
 		<section
 			className='
-				relative animate-rise-in px-8 pt-20 pb-16 text-center
+				relative px-8 pt-20 pb-16 text-center
 				md:pt-32 md:pb-24
 			'
 		>

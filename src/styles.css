@@ -1,113 +1,116 @@
-
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap");
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Fraunces", Georgia, serif;
+	--font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+	--font-serif: 'Fraunces', Georgia, serif;
 
-  --color-surface: #ffffff;
-  --color-surface-muted: #f5f4f7;
-  --color-ink: #1a1424;
-  --color-ink-soft: #5b5668;
-  --color-line: rgba(90, 60, 140, 0.15);
-  --color-brand-500: #8b5cf6;
-  --color-brand-600: #7c3aed;
-  --color-brand-700: #5b21b6;
+	--color-surface: #ffffff;
+	--color-surface-muted: #f5f4f7;
+	--color-ink: #1a1424;
+	--color-ink-soft: #5b5668;
+	--color-line: rgba(90, 60, 140, 0.15);
+	--color-brand-500: #8b5cf6;
+	--color-brand-600: #7c3aed;
+	--color-brand-700: #5b21b6;
 
-  --animate-rise-in: rise-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
-
-  --blur-4xl: 5rem;
-  --blur-5xl: 6rem;
-  --blur-6xl: 7.5rem;
+	--blur-4xl: 5rem;
+	--blur-5xl: 6rem;
+	--blur-6xl: 7.5rem;
 }
 
-:root[data-theme="dark"] {
-  --color-surface: #1a1228;
-  --color-surface-muted: #0f0a1f;
-  --color-ink: #f5f3fa;
-  --color-ink-soft: #b8b0c8;
-  --color-line: rgba(167, 139, 250, 0.2);
-  --color-brand-500: #a78bfa;
-  --color-brand-600: #8b5cf6;
-  --color-brand-700: #7c3aed;
+:root[data-theme='dark'] {
+	--color-surface: #1a1228;
+	--color-surface-muted: #0f0a1f;
+	--color-ink: #f5f3fa;
+	--color-ink-soft: #b8b0c8;
+	--color-line: rgba(167, 139, 250, 0.2);
+	--color-brand-500: #a78bfa;
+	--color-brand-600: #8b5cf6;
+	--color-brand-700: #7c3aed;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-surface: #1a1228;
-    --color-surface-muted: #0f0a1f;
-    --color-ink: #f5f3fa;
-    --color-ink-soft: #b8b0c8;
-    --color-line: rgba(167, 139, 250, 0.2);
-    --color-brand-500: #a78bfa;
-    --color-brand-600: #8b5cf6;
-    --color-brand-700: #7c3aed;
-  }
+	:root:not([data-theme='light']) {
+		--color-surface: #1a1228;
+		--color-surface-muted: #0f0a1f;
+		--color-ink: #f5f3fa;
+		--color-ink-soft: #b8b0c8;
+		--color-line: rgba(167, 139, 250, 0.2);
+		--color-brand-500: #a78bfa;
+		--color-brand-600: #8b5cf6;
+		--color-brand-700: #7c3aed;
+	}
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html {
-  min-height: 100dvh;
-  scroll-behavior: smooth;
+	min-height: 100dvh;
+	scroll-behavior: smooth;
 }
 
 body,
 #app {
-  min-height: 100dvh;
+	min-height: 100dvh;
 }
 
 body {
-  margin: 0;
-  background:
-    radial-gradient(ellipse 120% 50% at 50% 0%, rgba(139, 92, 246, 0.08), transparent 65%),
-    #f5f4f7;
-  overflow-x: hidden;
+	margin: 0;
+	background:
+		radial-gradient(
+			ellipse 120% 50% at 50% 0%,
+			rgba(139, 92, 246, 0.08),
+			transparent 65%
+		),
+		#f5f4f7;
+	overflow-x: hidden;
 }
 
-:root[data-theme="dark"] body {
-  background:
-    radial-gradient(ellipse 120% 50% at 50% 0%, rgba(109, 40, 217, 0.3), transparent 65%),
-    #0f0a1f;
+:root[data-theme='dark'] body {
+	background:
+		radial-gradient(
+			ellipse 120% 50% at 50% 0%,
+			rgba(109, 40, 217, 0.3),
+			transparent 65%
+		),
+		#0f0a1f;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) body {
-    background:
-      radial-gradient(ellipse 120% 50% at 50% 0%, rgba(109, 40, 217, 0.3), transparent 65%),
-      #0f0a1f;
-  }
+	:root:not([data-theme='light']) body {
+		background:
+			radial-gradient(
+				ellipse 120% 50% at 50% 0%,
+				rgba(109, 40, 217, 0.3),
+				transparent 65%
+			),
+			#0f0a1f;
+	}
 }
 
 .prose {
-  --tw-prose-body: var(--color-ink-soft);
-  --tw-prose-bold: var(--color-ink);
-  --tw-prose-headings: var(--color-ink);
-  --tw-prose-links: var(--color-brand-500);
-  --tw-prose-code: var(--color-ink);
-  --tw-prose-counters: var(--color-ink-soft);
-  --tw-prose-bullets: var(--color-ink-soft);
-  --tw-prose-quotes: var(--color-ink-soft);
-  --tw-prose-quote-borders: var(--color-line);
+	--tw-prose-body: var(--color-ink-soft);
+	--tw-prose-bold: var(--color-ink);
+	--tw-prose-headings: var(--color-ink);
+	--tw-prose-links: var(--color-brand-500);
+	--tw-prose-code: var(--color-ink);
+	--tw-prose-counters: var(--color-ink-soft);
+	--tw-prose-bullets: var(--color-ink-soft);
+	--tw-prose-quotes: var(--color-ink-soft);
+	--tw-prose-quote-borders: var(--color-line);
 }
 
 @keyframes rise-in {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-rise-in {
-    animation: none;
-  }
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }

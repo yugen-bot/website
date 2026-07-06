@@ -73,6 +73,18 @@ To add another starboard, use \`/starboard add\`.
 		voteUrl: 'https://top.gg/bot/1208707348659445800',
 	},
 	{
+		id: 'hachimitsu',
+		name: 'Hachimitsu',
+		description: `A simple honeypot bot that will get rid of unwanted bots or compromised accounts that spam your server (蜂蜜 - Honey)
+
+**Multiple honeypots:**
+
+To add a honeypot, use \`/honeypot add\`.
+`,
+		accentColor: '#f5a623',
+		voteUrl: 'https://top.gg/bot/1523707144644464831',
+	},
+	{
 		id: 'iro',
 		name: 'Iro',
 		description: `A simple color replying discord bot! Iro(色 - color)`,

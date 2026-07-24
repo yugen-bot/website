@@ -1,0 +1,183 @@
+{
+	"schemaVersion": 2,
+	"generatedAt": "2026-07-24T00:00:00.000Z",
+	"title": "Design System: Yugen Stack",
+	"extensions": {
+		"colorMeta": {
+			"sumi": {
+				"role": "primary",
+				"displayName": "Sumi Ink",
+				"canonical": "#141C28",
+				"tonalRamp": [
+					"#0B121C",
+					"#141C28",
+					"#233042",
+					"#3C4A5A",
+					"#6C7788",
+					"#9AA6B4",
+					"#C6CDD6",
+					"#ECEAE3"
+				]
+			},
+			"indigo": {
+				"role": "secondary",
+				"displayName": "Deep Indigo",
+				"canonical": "#38597E",
+				"tonalRamp": [
+					"#1B3452",
+					"#274664",
+					"#38597E",
+					"#4E6F94",
+					"#6B8BAD",
+					"#8FA9C4",
+					"#B6C7D9",
+					"#DCE6F0"
+				]
+			},
+			"paper": {
+				"role": "neutral",
+				"displayName": "Paper",
+				"canonical": "#ECEAE3",
+				"tonalRamp": [
+					"#060B13",
+					"#0B121C",
+					"#1A2230",
+					"#3C4A5A",
+					"#6C7788",
+					"#B4B1A8",
+					"#E1DED5",
+					"#ECEAE3"
+				]
+			},
+			"accent-iro": {
+				"role": "tertiary",
+				"displayName": "Iro Crimson",
+				"canonical": "#DC3563",
+				"tonalRamp": [
+					"#5A0F26",
+					"#7E1638",
+					"#A81F4C",
+					"#DC3563",
+					"#E86089",
+					"#F08CAA",
+					"#F6B8CB",
+					"#FBE0E9"
+				]
+			}
+		},
+		"typographyMeta": {
+			"display": {
+				"displayName": "Display",
+				"purpose": "Wordmark and the single hero line only."
+			},
+			"headline": {
+				"displayName": "Headline",
+				"purpose": "Bot names, beside their kanji."
+			},
+			"body": {
+				"displayName": "Body",
+				"purpose": "Descriptions and running text, 60-70ch."
+			},
+			"label": {
+				"displayName": "Label",
+				"purpose": "Status pills, meta, captions."
+			}
+		},
+		"shadows": [
+			{
+				"name": "hover-lift",
+				"value": "0 10px 30px -12px rgba(20,28,40,0.35)",
+				"purpose": "Soft offset lift on buttons/links at hover only; no resting shadows."
+			}
+		],
+		"motion": [
+			{
+				"name": "ease-ink",
+				"value": "cubic-bezier(0.16, 1, 0.3, 1)",
+				"purpose": "Exponential ease-out for entrances and state transitions."
+			},
+			{
+				"name": "drift",
+				"value": "18s ease-in-out infinite",
+				"purpose": "Slow breathing/drift of an online bot's ink current."
+			}
+		],
+		"breakpoints": [
+			{ "name": "md", "value": "48rem" },
+			{ "name": "lg", "value": "64rem" }
+		]
+	},
+	"components": [
+		{
+			"name": "Primary / Invite Button",
+			"kind": "button",
+			"refersTo": "button-primary",
+			"description": "Ink-filled pill for the primary action; inverts to light-on-dark automatically in dark mode.",
+			"html": "<button class=\"ds-btn-primary\">Invite</button>",
+			"css": ".ds-btn-primary { display:inline-flex; align-items:center; gap:.5rem; background: var(--color-sumi, #141C28); color: var(--color-paper, #ECEAE3); border:none; border-radius:999px; padding:.9rem 1.8rem; font-family:'Zen Kaku Gothic New',sans-serif; font-weight:600; cursor:pointer; transition: transform .3s cubic-bezier(0.16,1,0.3,1), box-shadow .3s cubic-bezier(0.16,1,0.3,1); } .ds-btn-primary:hover { transform:translateY(-2px); box-shadow:0 10px 30px -12px rgba(20,28,40,0.35); } .ds-btn-primary:focus-visible { outline:2px solid var(--color-indigo,#38597E); outline-offset:2px; }"
+		},
+		{
+			"name": "Ghost Button",
+			"kind": "button",
+			"refersTo": "button-ghost",
+			"description": "Paper pill with a 1px mist border for secondary actions (Vote, GitHub, Ko-fi).",
+			"html": "<button class=\"ds-btn-ghost\">Vote</button>",
+			"css": ".ds-btn-ghost { display:inline-flex; align-items:center; gap:.5rem; background:transparent; color:var(--color-sumi,#141C28); border:1px solid rgba(20,28,40,0.12); border-radius:999px; padding:.9rem 1.6rem; font-family:'Zen Kaku Gothic New',sans-serif; font-weight:500; cursor:pointer; transition: transform .3s cubic-bezier(0.16,1,0.3,1), border-color .3s; } .ds-btn-ghost:hover { transform:translateY(-2px); border-color:rgba(20,28,40,0.3); } .ds-btn-ghost:focus-visible { outline:2px solid var(--color-indigo,#38597E); outline-offset:2px; }"
+		},
+		{
+			"name": "Status Pill",
+			"kind": "chip",
+			"refersTo": "status-pill",
+			"description": "State dot plus a text label; never color-only. Online dot breathes.",
+			"html": "<span class=\"ds-status\"><span class=\"ds-status-dot\"></span>Online</span>",
+			"css": ".ds-status { display:inline-flex; align-items:center; gap:.5rem; font-family:'Zen Kaku Gothic New',sans-serif; font-size:.8125rem; font-weight:500; color:var(--color-ink-current,#3C4A5A); } .ds-status-dot { width:.5rem; height:.5rem; border-radius:999px; background:#81BA6C; box-shadow:0 0 0 0 rgba(129,186,108,0.6); animation: ds-breathe 2.4s cubic-bezier(0.16,1,0.3,1) infinite; } @keyframes ds-breathe { 0%{box-shadow:0 0 0 0 rgba(129,186,108,0.5)} 70%,100%{box-shadow:0 0 0 6px rgba(129,186,108,0)} }"
+		}
+	],
+	"narrative": {
+		"northStar": "Ink on water",
+		"overview": "Yugen Stack is 幽玄 — subtle, profound grace — made into an interface. The surface is a still basin of sumi ink on paper-white water. Nothing is boxed; content rests in open space and is divided by hairline mist. The ground is near-monochrome ink; the only saturated color is the single bloom reserved for the bot you are looking at. Motion is the material: online ink drifts, offline ink settles gray. It is the deliberate opposite of the Discord-bot landing convention — restraint is the argument for bots that each do one thing.",
+		"keyCharacteristics": [
+			"Ink-monochrome ground; accent color is rare and always earned.",
+			"Open, card-free composition organized by space and mist hairlines.",
+			"Japanese type that also sets the kanji names.",
+			"Live status expressed as motion, never as color alone.",
+			"One authored generative moment (the ink), not scattered effects."
+		],
+		"rules": [
+			{
+				"name": "The One Bloom Rule",
+				"body": "Only one saturated color is present per region — that region's bot accent — used on ≤10% of it. Everything else is ink.",
+				"section": "colors"
+			},
+			{
+				"name": "The No-Blurple Rule",
+				"body": "Discord purple never appears. The Discord icon is drawn in current ink, not brand color.",
+				"section": "colors"
+			},
+			{
+				"name": "The Kanji-First Rule",
+				"body": "A bot's kanji is set large in Mincho beside its name as reading-contrast content, never a decorative watermark.",
+				"section": "typography"
+			},
+			{
+				"name": "The Flat-Basin Rule",
+				"body": "Surfaces are flat at rest. Elevation is a response to pointer state only.",
+				"section": "elevation"
+			}
+		],
+		"dos": [
+			"Do keep the ground ink-monochrome and let exactly one bot accent bloom per region.",
+			"Do set kanji as reading-contrast content in Zen Old Mincho beside names.",
+			"Do pair every live-status color with a text label.",
+			"Do give the page one authored motion (the ink) and respect prefers-reduced-motion.",
+			"Do separate content with space and 1px mist, not cards."
+		],
+		"donts": [
+			"Don't use Discord blurple or any purple accent anywhere.",
+			"Don't box content in cards, nested containers, or resting drop shadows.",
+			"Don't use gradient text, tracked uppercase eyebrows, or hero-metric stat bars.",
+			"Don't let the ink obscure the wordmark, the one-liner, or any action.",
+			"Don't reintroduce Fraunces/Manrope or a centered generic-hero composition."
+		]
+	}
+}

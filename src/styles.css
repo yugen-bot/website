@@ -1,46 +1,78 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@500;600;700;900&display=swap');
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 
 @theme {
-	--font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
-	--font-serif: 'Fraunces', Georgia, serif;
+	--font-sans: 'Zen Kaku Gothic New', ui-sans-serif, system-ui, sans-serif;
+	--font-serif: 'Zen Old Mincho', 'Yu Mincho', Georgia, serif;
 
-	--color-surface: #ffffff;
-	--color-surface-muted: #f5f4f7;
-	--color-ink: #1a1424;
-	--color-ink-soft: #5b5668;
-	--color-line: rgba(90, 60, 140, 0.15);
-	--color-brand-500: #8b5cf6;
-	--color-brand-600: #7c3aed;
-	--color-brand-700: #5b21b6;
+	/* Ink-on-water palette (light: ink on paper) */
+	--color-paper: #eceae3;
+	--color-paper-deep: #e1ded5;
+	--color-sumi: #141c28;
+	--color-ink-current: #3c4a5a;
+	--color-ink-dilute: #6c7788;
+	--color-mist: rgba(20, 28, 40, 0.12);
+	--color-indigo: #38597e;
 
-	--blur-4xl: 5rem;
-	--blur-5xl: 6rem;
-	--blur-6xl: 7.5rem;
+	/* Legacy semantic aliases so incumbent utilities keep resolving */
+	--color-surface: #eceae3;
+	--color-surface-muted: #e1ded5;
+	--color-ink: #141c28;
+	--color-ink-soft: #3c4a5a;
+	--color-line: rgba(20, 28, 40, 0.12);
+	--color-brand-500: #38597e;
+	--color-brand-600: #294a6e;
+	--color-brand-700: #1b3452;
+
+	--radius-panel: 1.75rem;
+
+	--shadow-lift: 0 10px 30px -12px rgba(20, 28, 40, 0.35);
+
+	--animate-rise: rise-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+	--animate-drift: drift 19s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+	--animate-drift-slow: drift 27s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+	--animate-breathe: breathe 2.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+	--animate-bead: bead-fall 1.5s cubic-bezier(0.5, 0, 0.75, 0) both;
 }
 
 :root[data-theme='dark'] {
-	--color-surface: #1a1228;
-	--color-surface-muted: #0f0a1f;
-	--color-ink: #f5f3fa;
-	--color-ink-soft: #b8b0c8;
-	--color-line: rgba(167, 139, 250, 0.2);
-	--color-brand-500: #a78bfa;
-	--color-brand-600: #8b5cf6;
-	--color-brand-700: #7c3aed;
+	--color-paper: #0b121c;
+	--color-paper-deep: #060b13;
+	--color-sumi: #e9ecf1;
+	--color-ink-current: #aeb9c6;
+	--color-ink-dilute: #7c8998;
+	--color-mist: rgba(174, 185, 201, 0.16);
+	--color-indigo: #7fa8ce;
+
+	--color-surface: #0b121c;
+	--color-surface-muted: #060b13;
+	--color-ink: #e9ecf1;
+	--color-ink-soft: #aeb9c6;
+	--color-line: rgba(174, 185, 201, 0.16);
+	--color-brand-500: #7fa8ce;
+	--color-brand-600: #9fbedd;
+	--color-brand-700: #b6cfe6;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root:not([data-theme='light']) {
-		--color-surface: #1a1228;
-		--color-surface-muted: #0f0a1f;
-		--color-ink: #f5f3fa;
-		--color-ink-soft: #b8b0c8;
-		--color-line: rgba(167, 139, 250, 0.2);
-		--color-brand-500: #a78bfa;
-		--color-brand-600: #8b5cf6;
-		--color-brand-700: #7c3aed;
+		--color-paper: #0b121c;
+		--color-paper-deep: #060b13;
+		--color-sumi: #e9ecf1;
+		--color-ink-current: #aeb9c6;
+		--color-ink-dilute: #7c8998;
+		--color-mist: rgba(174, 185, 201, 0.16);
+		--color-indigo: #7fa8ce;
+
+		--color-surface: #0b121c;
+		--color-surface-muted: #060b13;
+		--color-ink: #e9ecf1;
+		--color-ink-soft: #aeb9c6;
+		--color-line: rgba(174, 185, 201, 0.16);
+		--color-brand-500: #7fa8ce;
+		--color-brand-600: #9fbedd;
+		--color-brand-700: #b6cfe6;
 	}
 }
 
@@ -62,55 +94,111 @@ body {
 	margin: 0;
 	background:
 		radial-gradient(
-			ellipse 120% 50% at 50% 0%,
-			rgba(139, 92, 246, 0.08),
-			transparent 65%
+			ellipse 120% 60% at 50% -10%,
+			rgba(56, 89, 126, 0.1),
+			transparent 60%
 		),
-		#f5f4f7;
+		#eceae3;
 	overflow-x: hidden;
 }
 
 :root[data-theme='dark'] body {
 	background:
 		radial-gradient(
-			ellipse 120% 50% at 50% 0%,
-			rgba(109, 40, 217, 0.3),
-			transparent 65%
+			ellipse 120% 60% at 50% -10%,
+			rgba(56, 89, 126, 0.28),
+			transparent 62%
 		),
-		#0f0a1f;
+		#0b121c;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root:not([data-theme='light']) body {
 		background:
 			radial-gradient(
-				ellipse 120% 50% at 50% 0%,
-				rgba(109, 40, 217, 0.3),
-				transparent 65%
+				ellipse 120% 60% at 50% -10%,
+				rgba(56, 89, 126, 0.28),
+				transparent 62%
 			),
-			#0f0a1f;
+			#0b121c;
 	}
 }
 
 .prose {
-	--tw-prose-body: var(--color-ink-soft);
-	--tw-prose-bold: var(--color-ink);
-	--tw-prose-headings: var(--color-ink);
-	--tw-prose-links: var(--color-brand-500);
-	--tw-prose-code: var(--color-ink);
-	--tw-prose-counters: var(--color-ink-soft);
-	--tw-prose-bullets: var(--color-ink-soft);
-	--tw-prose-quotes: var(--color-ink-soft);
-	--tw-prose-quote-borders: var(--color-line);
+	--tw-prose-body: var(--color-ink-current);
+	--tw-prose-bold: var(--color-sumi);
+	--tw-prose-headings: var(--color-sumi);
+	--tw-prose-links: var(--color-indigo);
+	--tw-prose-code: var(--color-sumi);
+	--tw-prose-counters: var(--color-ink-dilute);
+	--tw-prose-bullets: var(--color-ink-dilute);
+	--tw-prose-quotes: var(--color-ink-current);
+	--tw-prose-quote-borders: var(--color-mist);
 }
 
 @keyframes rise-in {
 	from {
 		opacity: 0;
-		transform: translateY(12px);
+		transform: translateY(14px);
 	}
 	to {
 		opacity: 1;
 		transform: translateY(0);
+	}
+}
+
+/* Slow, organic drift of an online bot's ink current */
+@keyframes drift {
+	0% {
+		transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+	}
+	33% {
+		transform: translate3d(2.5%, -2%, 0) rotate(3deg) scale(1.05);
+	}
+	66% {
+		transform: translate3d(-2%, 1.5%, 0) rotate(-2deg) scale(1.03);
+	}
+	100% {
+		transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+	}
+}
+
+/* Breathing ring on an online status dot */
+@keyframes breathe {
+	0% {
+		box-shadow: 0 0 0 0 var(--breathe-color, rgba(129, 186, 108, 0.5));
+	}
+	70%,
+	100% {
+		box-shadow: 0 0 0 7px rgba(129, 186, 108, 0);
+	}
+}
+
+/* The opening ink bead falling into the basin */
+@keyframes bead-fall {
+	0% {
+		opacity: 0;
+		transform: translateY(-40px) scale(0.4);
+	}
+	60% {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
 	}
 }

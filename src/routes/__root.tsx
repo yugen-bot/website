@@ -27,7 +27,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 					content:
 						'A collection of fun and simplistic Discord bots built to elevate your community.',
 				},
-				{ name: 'theme-color', content: '#7c3aed' },
+				{ name: 'theme-color', content: '#eceae3' },
 				// Open Graph
 				{ property: 'og:type', content: 'website' },
 				{ property: 'og:site_name', content: 'Yugen Stack' },

@@ -10,11 +10,11 @@ export default function Footer() {
 	const year = new Date().getFullYear();
 
 	return (
-		<footer className='mt-16 border-t border-line'>
+		<footer className='mt-8 border-t border-mist'>
 			<div
 				className='
-					mx-auto flex max-w-6xl flex-wrap items-center gap-4 px-4 py-6 text-sm
-					text-ink-soft
+					mx-auto flex max-w-5xl flex-wrap items-center gap-4 px-6 py-8 text-sm
+					text-ink-dilute
 					md:grid md:grid-cols-3
 				'
 			>
@@ -29,7 +29,7 @@ export default function Footer() {
 					<a
 						className='
 							transition
-							hover:text-ink
+							hover:text-sumi
 						'
 						href='#'
 					>
@@ -59,7 +59,7 @@ export default function Footer() {
 						aria-label='GitHub'
 						className='
 							rounded-lg p-1.5 transition
-							hover:bg-surface-muted hover:text-ink
+							hover:bg-paper-deep hover:text-sumi
 						'
 						href={GITHUB_URL}
 						rel='noopener noreferrer'
@@ -74,7 +74,7 @@ export default function Footer() {
 						aria-label='Discord'
 						className='
 							rounded-lg p-1.5 transition
-							hover:bg-surface-muted hover:text-ink
+							hover:bg-paper-deep hover:text-sumi
 						'
 						href={DISCORD_URL}
 						rel='noopener noreferrer'
